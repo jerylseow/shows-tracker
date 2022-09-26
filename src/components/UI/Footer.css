@@ -1,0 +1,12 @@
+footer {
+  padding: 20px 10px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #212f45;
+  color: aliceblue;
+}
+
+footer a {
+  color: aliceblue;
+}

@@ -5,32 +5,21 @@
   font-family: sans-serif;
 }
 
-header {
-  background-color: #212f45;
-  color: aliceblue;
-  padding: 20px 0;
-  text-align: center;
-}
-
-footer {
-  background-color: #212f45;
-  color: aliceblue;
-}
-
-footer a {
-  color: aliceblue;
-}
-
-button {
+.big-btn {
   border: none;
   padding: 16px 32px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
-.AddBtn {
+.add-btn {
   display: block;
   margin: 10px auto;
   background-color: #4d194d;
   color: aliceblue;
+}
+
+.add-btn:hover {
+  background-color: #3e1f47;
 }

@@ -1,24 +1,9 @@
 import React from "react";
 import "./ShowsTable.css";
 
-const SHOWS_LIST = [
-  {
-    title: "Fruits Basket",
-    description:
-      "An orphaned girl finds adventure, mystery and love as she interacts with the mysterious Soma family.",
-    rating: 10,
-  },
-  {
-    title: "The Witcher",
-    description:
-      "Political stife, monster-slaying and destiny plague Geralt of Rivia.",
-    rating: 9,
-  },
-];
-
-const ShowsTable = () => {
+const ShowsTable = (props) => {
   return (
-    <table>
+    <table className="shows-table">
       <thead>
         <tr>
           <th>Title</th>
@@ -27,7 +12,7 @@ const ShowsTable = () => {
         </tr>
       </thead>
       <tbody>
-        {SHOWS_LIST.map((show) => {
+        {props.showsList.map((show) => {
           return (
             <tr key={show.title}>
               <td>{show.title}</td>
