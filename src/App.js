@@ -6,8 +6,6 @@ import ShowsTable from "./components/ShowsTable";
 import ShowsForm from "./components/ShowsForm";
 import ShowsDetailPanel from "./components/ShowsDetailPanel";
 
-const API_KEY = "";
-
 const SHOWS_LIST = [
   {
     title: "Fruits Basket",
@@ -30,22 +28,20 @@ const App = () => {
   const [showApiDetails, setShowApiDetails] = useState({});
   const [showsList, setShowsList] = useState(SHOWS_LIST);
 
-  // TODO: fix async and setTimeout
   useEffect(() => {
     const fetchTimer = setTimeout(() => {
-      console.log(title);
       fetch(
         "http://www.omdbapi.com/?t=" +
           title.split(" ").join("+") +
           "&apikey=" +
-          API_KEY
+          process.env.REACT_APP_OMDB_KEY
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           setShowApiDetails(data);
-          console.log(showApiDetails);
         });
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(fetchTimer);
   }, [title]);
