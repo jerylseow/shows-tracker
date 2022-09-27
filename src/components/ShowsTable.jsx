@@ -7,7 +7,7 @@ const ShowsTable = (props) => {
       <thead>
         <tr>
           <th>Title</th>
-          <th>Description</th>
+          <th>Comments</th>
           <th>Rating</th>
         </tr>
       </thead>
@@ -16,7 +16,7 @@ const ShowsTable = (props) => {
           return (
             <tr key={show.title}>
               <td>{show.title}</td>
-              <td>{show.description}</td>
+              <td>{show.comments}</td>
               <td>{show.rating}</td>
             </tr>
           );

@@ -3,17 +3,25 @@ import "./ShowsForm.css";
 
 const DEFAULT_FORM_STATE = {
   title: "",
-  description: "",
+  comments: "",
   rating: "",
 };
 
 const ShowsForm = (props) => {
-  const [formState, setFormState] = useState(DEFAULT_FORM_STATE);
+  const [showUserDetails, setShowUserDetails] = useState(DEFAULT_FORM_STATE);
+
+  const formChangeHandler = (e) => {
+    if (e.target.name === "title") props.onTitleChange(e.target.value);
+    setShowUserDetails((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onAddShow(formState);
-    setFormState(DEFAULT_FORM_STATE);
+    props.onAddShow(showUserDetails);
+    setShowUserDetails(DEFAULT_FORM_STATE);
     console.log("Form submitted");
   };
 
@@ -24,33 +32,30 @@ const ShowsForm = (props) => {
           <h3>Title:</h3>
           <input
             className="text-field"
+            name="title"
             type="text"
-            value={formState.title}
-            onChange={(e) =>
-              setFormState((prev) => ({ ...prev, title: e.target.value }))
-            }
+            value={showUserDetails.title}
+            onChange={formChangeHandler}
           />
         </label>
         <label>
-          <h3>Description:</h3>
+          <h3>Comments:</h3>
           <input
             className="text-field"
+            name="comments"
             type="text"
-            value={formState.description}
-            onChange={(e) =>
-              setFormState((prev) => ({ ...prev, description: e.target.value }))
-            }
+            value={showUserDetails.comments}
+            onChange={formChangeHandler}
           />
         </label>
         <label>
           <h3>Rating:</h3>
           <input
             className="text-field"
+            name="rating"
             type="text"
-            value={formState.rating}
-            onChange={(e) =>
-              setFormState((prev) => ({ ...prev, rating: e.target.value }))
-            }
+            value={showUserDetails.rating}
+            onChange={formChangeHandler}
           />
         </label>
         <input className="big-btn submit-btn" type="submit" value="Submit" />
