@@ -57,28 +57,31 @@ const App = () => {
   };
 
   return (
-    <React.Fragment>
-      <Header />
-      <main>
-        <button
-          className="big-btn add-btn"
-          onClick={() => setOpenForm((prev) => !prev)}
-        >
-          + Add New Show
-        </button>
-        {openForm && (
-          <ShowsForm
-            onTitleChange={titleChangeHandler}
-            onAddShow={addShowHandler}
-            showApiDetails={showApiDetails}
-          />
-        )}
-        <ShowsTable showsList={showsList} />
-        <ShowsDetailPanel showsList={showApiDetails} />
-        <div></div>
-      </main>
-      <Footer />
-    </React.Fragment>
+    <div className="box">
+      <Header className="header" />
+      <div className="content">
+        <main className="main-content">
+          <button
+            className="big-btn add-btn"
+            onClick={() => setOpenForm((prev) => !prev)}
+          >
+            + Add New Show
+          </button>
+          {openForm && (
+            <ShowsForm
+              onTitleChange={titleChangeHandler}
+              onAddShow={addShowHandler}
+              showApiDetails={showApiDetails}
+            />
+          )}
+          {!openForm && <ShowsTable showsList={showsList} />}
+        </main>
+        <aside className="aside-content">
+          <ShowsDetailPanel showsList={showApiDetails} />
+        </aside>
+      </div>
+      <Footer className="footer" />
+    </div>
   );
 };
 

@@ -1,0 +1,10 @@
+.poster {
+  display: block;
+  margin: 10px auto;
+}
+
+.show-description {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+}

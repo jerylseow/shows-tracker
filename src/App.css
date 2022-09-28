@@ -23,3 +23,31 @@
 .add-btn:hover {
   background-color: #3e1f47;
 }
+
+.box {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.box .header {
+  flex-grow: 0;
+}
+
+.box .content {
+  flex-grow: 1;
+}
+
+.main-content {
+  float: left;
+  width: 50%;
+}
+
+.aside-content {
+  float: left;
+  width: 50%;
+}
+
+.box .footer {
+  flex-grow: 0;
+}
