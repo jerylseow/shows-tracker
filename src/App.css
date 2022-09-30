@@ -15,7 +15,7 @@
 
 .add-btn {
   display: block;
-  margin: 10px auto;
+  margin: 10px;
   background-color: #4d194d;
   color: aliceblue;
 }
@@ -38,12 +38,15 @@
   flex-grow: 1;
 }
 
-.main-content {
+.box .content .main-content {
   float: left;
   width: 50%;
+  height: 70vh;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
-.aside-content {
+.box .content .aside-content {
   float: left;
   width: 50%;
 }

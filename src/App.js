@@ -24,35 +24,36 @@ const SHOWS_LIST = [
 
 const App = () => {
   const [openForm, setOpenForm] = useState(false);
-  const [title, setTitle] = useState("");
   const [showApiDetails, setShowApiDetails] = useState({});
+  const [showDetails, setShowDetails] = useState({});
   const [showsList, setShowsList] = useState(SHOWS_LIST);
 
-  useEffect(() => {
+  const fetchShowHandlerDelayed = (t) => {
     const fetchTimer = setTimeout(() => {
-      fetch(
-        "http://www.omdbapi.com/?t=" +
-          title.split(" ").join("+") +
-          "&apikey=" +
-          process.env.REACT_APP_OMDB_KEY
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setShowApiDetails(data);
-        });
+      fetchShowHandler(t);
     }, 1000);
 
     return () => clearTimeout(fetchTimer);
-  }, [title]);
+  };
 
-  const titleChangeHandler = (t) => {
-    setTitle(t);
+  const fetchShowHandler = (t) => {
+    fetch(
+      "http://www.omdbapi.com/?t=" +
+        t.split(" ").join("+") +
+        "&apikey=" +
+        process.env.REACT_APP_OMDB_KEY
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setShowApiDetails(data);
+        setShowDetails(data);
+      });
   };
 
   const addShowHandler = (showUserDetails) => {
-    let showDetails = { ...showUserDetails, ...showApiDetails };
-    setShowsList((prev) => [showDetails, ...prev]);
+    let combined = { ...showUserDetails, ...showApiDetails };
+    setShowsList((prev) => [combined, ...prev]);
     console.log(showDetails);
   };
 
@@ -60,24 +61,30 @@ const App = () => {
     <div className="box">
       <Header className="header" />
       <div className="content">
+        <button
+          className="big-btn add-btn"
+          onClick={() => setOpenForm((prev) => !prev)}
+        >
+          + Add New Show
+        </button>
         <main className="main-content">
-          <button
-            className="big-btn add-btn"
-            onClick={() => setOpenForm((prev) => !prev)}
-          >
-            + Add New Show
-          </button>
           {openForm && (
             <ShowsForm
-              onTitleChange={titleChangeHandler}
+              onTitleChange={fetchShowHandlerDelayed}
               onAddShow={addShowHandler}
-              showApiDetails={showApiDetails}
             />
           )}
-          {!openForm && <ShowsTable showsList={showsList} />}
+          <div className="main-content-table">
+            {!openForm && (
+              <ShowsTable
+                showsList={showsList}
+                onHoverShow={fetchShowHandler}
+              />
+            )}
+          </div>
         </main>
         <aside className="aside-content">
-          <ShowsDetailPanel showsList={showApiDetails} />
+          <ShowsDetailPanel show={showDetails} />
         </aside>
       </div>
       <Footer className="footer" />

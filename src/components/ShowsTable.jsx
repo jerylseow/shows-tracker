@@ -14,7 +14,11 @@ const ShowsTable = (props) => {
       <tbody>
         {props.showsList.map((show) => {
           return (
-            <tr key={show.title}>
+            <tr
+              className="shows-table-row"
+              key={show.title}
+              onMouseOver={() => props.onHoverShow(show.title)}
+            >
               <td>{show.title}</td>
               <td>{show.comments}</td>
               <td>{show.rating}</td>

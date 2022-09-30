@@ -7,11 +7,13 @@ const ShowsDetailPanel = (props) => {
       <div className="show-poster">
         <img
           className="poster"
-          src={props.showsList.Poster}
-          alt={props.showsList.Title}
+          src={props.show.Poster}
+          alt={props.show.Title}
+          width="40%"
+          height="auto"
         />
       </div>
-      <div className="show-description">{props.showsList.Plot}</div>
+      <div className="show-description">{props.show.Plot}</div>
     </React.Fragment>
   );
 };
