@@ -28,14 +28,6 @@ const App = () => {
   const [showDetails, setShowDetails] = useState({});
   const [showsList, setShowsList] = useState(SHOWS_LIST);
 
-  const fetchShowHandlerDelayed = (t) => {
-    const fetchTimer = setTimeout(() => {
-      fetchShowHandler(t);
-    }, 1000);
-
-    return () => clearTimeout(fetchTimer);
-  };
-
   const fetchShowHandler = (t) => {
     fetch(
       "http://www.omdbapi.com/?t=" +
@@ -70,7 +62,7 @@ const App = () => {
         <main className="main-content">
           {openForm && (
             <ShowsForm
-              onTitleChange={fetchShowHandlerDelayed}
+              onTitleChange={fetchShowHandler}
               onAddShow={addShowHandler}
             />
           )}

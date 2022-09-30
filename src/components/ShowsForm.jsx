@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ShowsForm.css";
 
 const DEFAULT_FORM_STATE = {
@@ -9,9 +9,18 @@ const DEFAULT_FORM_STATE = {
 
 const ShowsForm = (props) => {
   const [showUserDetails, setShowUserDetails] = useState(DEFAULT_FORM_STATE);
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      props.onTitleChange(title);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [title]);
 
   const formChangeHandler = (e) => {
-    if (e.target.name === "title") props.onTitleChange(e.target.value);
+    if (e.target.name === "title") setTitle(e.target.value);
     setShowUserDetails((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
