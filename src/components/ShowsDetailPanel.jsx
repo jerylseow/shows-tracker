@@ -9,7 +9,7 @@ const ShowsDetailPanel = (props) => {
           className="poster"
           src={props.show.Poster}
           alt={props.show.Title}
-          width="40%"
+          width="50%"
           height="auto"
         />
       </div>

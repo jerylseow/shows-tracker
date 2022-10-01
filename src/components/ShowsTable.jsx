@@ -16,10 +16,10 @@ const ShowsTable = (props) => {
           return (
             <tr
               className="shows-table-row"
-              key={show.title}
-              onMouseOver={() => props.onHoverShow(show.title)}
+              key={show.Title}
+              onMouseOver={() => props.onHoverShow(show.Title)}
             >
-              <td>{show.title}</td>
+              <td>{show.Title}</td>
               <td>{show.comments}</td>
               <td>{show.rating}</td>
             </tr>

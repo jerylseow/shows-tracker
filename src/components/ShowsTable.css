@@ -1,12 +1,12 @@
 .shows-table {
-  width: 80%;
-  margin: 10px auto;
   border-collapse: collapse;
+  width: 100%;
+  color: #403f4c;
 }
 
 .shows-table th {
-  background-color: #212f45;
-  color: aliceblue;
+  background-color: #457b9d;
+  color: #f1faee;
 }
 
 .shows-table,
@@ -17,6 +17,10 @@ td {
 }
 
 .shows-table .shows-table-row:hover {
-  background-color: #212f45;
-  color: aliceblue;
+  background-color: #f1faee;
+  color: 1D3557;
 }
+
+/* table td + td {
+  border-left: 1px solid #212f45;
+} */
