@@ -1,10 +1,12 @@
 import React from "react";
-import './Header.css';
+import "./Header.css";
+import icon from "../../images/popcorn.png";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
-      <h1>Welcome to the Shows Tracker Web App!</h1>
+      <img className="header-icon" src={icon} alt="" />
+      <h1 className="header-title">Shows Tracker App</h1>
     </header>
   );
 };

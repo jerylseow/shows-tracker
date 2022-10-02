@@ -1,6 +1,18 @@
 header {
   background-color: #1d3557;
   color: aliceblue;
-  padding: 20px 10px;
   text-align: center;
+  height: 70px;
+  line-height: 70px;
+}
+
+header .header-icon {
+  max-height: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+header .header-title {
+  display: inline-block;
+  vertical-align: middle;
 }

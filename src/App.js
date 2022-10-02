@@ -5,6 +5,7 @@ import Footer from "./components/UI/Footer";
 import ShowsTable from "./components/ShowsTable";
 import ShowsForm from "./components/ShowsForm";
 import ShowsDetailPanel from "./components/ShowsDetailPanel";
+import NavPanel from "./components/UI/NavPanel";
 
 const SHOWS_LIST = [
   {
@@ -27,7 +28,7 @@ const SHOWS_LIST = [
 ];
 
 const App = () => {
-  const [openForm, setOpenForm] = useState(false);
+  const [openPanel, setOpenPanel] = useState("ShowsTable");
   const [showApiDetails, setShowApiDetails] = useState({});
   const [showDetails, setShowDetails] = useState({});
   const [showsList, setShowsList] = useState(SHOWS_LIST);
@@ -58,33 +59,31 @@ const App = () => {
     setShowDetails(tDetails);
   };
 
+  const clickPanelHandler = (p) => {
+    setOpenPanel(p);
+  };
+
   return (
     <div className="box">
-      <Header className="header" />
+      <Header />
       <div className="content">
+        <nav className="nav-content">
+          <NavPanel onClickPanel={clickPanelHandler} />
+        </nav>
         <main className="main-content">
-          {/* TODO: Make new component */}
-          <div className="controls-panel">
-            <button className="big-btn">Shows List</button>
-            <button
-              className="big-btn add-btn"
-              onClick={() => setOpenForm((prev) => !prev)}
-            >
-              + Add New Show
-            </button>
-            <button className="big-btn">Edit Show</button>
-          </div>
-          {openForm && (
-            <ShowsForm
-              onTitleChange={fetchShowHandler}
-              onAddShow={addShowHandler}
-            />
-          )}
-          {!openForm && (
+          {openPanel === "ShowsTable" && (
             <div className="main-content-table">
               <ShowsTable
                 showsList={showsList}
                 onHoverShow={hoverShowHandler}
+              />
+            </div>
+          )}
+          {openPanel === "ShowsForm" && (
+            <div className="main-content-form">
+              <ShowsForm
+                onTitleChange={fetchShowHandler}
+                onAddShow={addShowHandler}
               />
             </div>
           )}
@@ -93,7 +92,7 @@ const App = () => {
           <ShowsDetailPanel show={showDetails} />
         </aside>
       </div>
-      <Footer className="footer" />
+      <Footer />
     </div>
   );
 };

@@ -1,0 +1,17 @@
+.nav-btn {
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.add-btn {
+  background-color: #4d194d;
+  color: aliceblue;
+}
+
+.add-btn:hover {
+  background-color: #3e1f47;
+}

@@ -10,14 +10,15 @@ const DEFAULT_FORM_STATE = {
 const ShowsForm = (props) => {
   const [showUserDetails, setShowUserDetails] = useState(DEFAULT_FORM_STATE);
   const [title, setTitle] = useState("");
+  const fetchHandler = props.onTitleChange;
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      props.onTitleChange(title);
+      fetchHandler(title);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [title]);
+  }, [title, fetchHandler]);
 
   const formChangeHandler = (e) => {
     if (e.target.name === "title") setTitle(e.target.value);
