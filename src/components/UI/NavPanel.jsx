@@ -14,7 +14,7 @@ const NavPanel = (props) => {
         className="nav-btn add-btn"
         onClick={() => props.onClickPanel("ShowsForm")}
       >
-        + Add New Show
+        Add New Show
       </button>
       <button className="nav-btn">Edit Show</button>
     </div>

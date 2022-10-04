@@ -37,7 +37,7 @@ const ShowsForm = (props) => {
 
   return (
     <div className="form-card">
-      <form onSubmit={submitHandler}>
+      <form className="shows-form" onSubmit={submitHandler}>
         <label>
           <h3>Title:</h3>
           <input
@@ -50,25 +50,29 @@ const ShowsForm = (props) => {
         </label>
         <label>
           <h3>Comments:</h3>
-          <input
-            className="text-field"
+          <textarea
+            className="text-area"
             name="comments"
-            type="text"
             value={showUserDetails.comments}
             onChange={formChangeHandler}
           />
         </label>
         <label>
           <h3>Rating:</h3>
-          <input
-            className="text-field"
+          <select
+            className="select"
             name="rating"
-            type="text"
             value={showUserDetails.rating}
             onChange={formChangeHandler}
-          />
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </label>
-        <input className="big-btn submit-btn" type="submit" value="Submit" />
+        <input className="submit-btn" type="submit" value="Submit" />
       </form>
     </div>
   );

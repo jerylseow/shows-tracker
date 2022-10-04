@@ -1,7 +1,8 @@
 .shows-table {
   border-collapse: collapse;
+  border: 1px solid #1d3557;
   width: 100%;
-  color: #403f4c;
+  color: #1d3557;
 }
 
 .shows-table th {
@@ -12,13 +13,12 @@
 .shows-table,
 th,
 td {
-  border-bottom: 1px solid #212f45;
+  border-bottom: 1px solid #1d3557;
   padding: 10px;
 }
 
 .shows-table .shows-table-row:hover {
-  background-color: #f1faee;
-  color: 1D3557;
+  background-color: #a8dadc;
 }
 
 /* table td + td {

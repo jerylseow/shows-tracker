@@ -5,13 +5,6 @@
   cursor: pointer;
   display: block;
   width: 100%;
-}
-
-.add-btn {
-  background-color: #4d194d;
-  color: aliceblue;
-}
-
-.add-btn:hover {
-  background-color: #3e1f47;
+  background-color: #1d3557;
+  color: #f1faee;
 }
